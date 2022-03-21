@@ -1,0 +1,2 @@
+*.tfstate*
+infra/.terraform*
