@@ -8,6 +8,9 @@ resource "aws_vpc" "main" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
 
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
   tags = {
     Name = "kar-vpc"
   }
@@ -78,6 +81,14 @@ resource "aws_instance" "ec2" {
   }
 }
 
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "kar-main-gateway"
+  }
+}
+
 resource "aws_db_instance" "default" {
   allocated_storage    = 10
   engine               = "mysql"
@@ -88,7 +99,14 @@ resource "aws_db_instance" "default" {
   password             = "foobarbaz"
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
+  publicly_accessible  = true
 
   db_subnet_group_name   = aws_db_subnet_group.subnet_group.name
   vpc_security_group_ids = [ aws_vpc.main.default_security_group_id ]
+
+  tags = {
+    Name = "kar-db"
+  }
+
+  depends_on = [ aws_internet_gateway.gw ]
 }
