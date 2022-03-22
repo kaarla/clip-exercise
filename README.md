@@ -4,7 +4,7 @@ En este repositorio encontrarás el código y scripts necesarios para desplegar 
 
 En el directorio **infra** se encuentra el código de Terraform para desplegar una VPC de AWS con con una RDS (usando MySQL) y una EC2. Para esta parte de la infraestructura, se puede acceder a la EC2 vía SSH y la RDS únicamente es accesible por medio de la instancia EC2.
 
-![Gráfica de infraestructura](infra/ingra-graph.png "Infraestructura que se desplegará")
+![Gráfica de infraestructura](ingra-graph.png "Infraestructura que se desplegará")
 
 En el directorio **database** está un pequeño esquema que nos permite crear una base de datos con una tabla básica.
 
