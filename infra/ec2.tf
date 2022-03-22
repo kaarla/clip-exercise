@@ -2,7 +2,7 @@ resource "aws_instance" "public-ec2" {
     ami           = var.ami_id
     instance_type = var.instance_type
     subnet_id     = module.vpc.subnet_public_id
-    key_name      = "kar-keys"
+    key_name      = var.key_name
     vpc_security_group_ids = [ aws_security_group.ec2-sg.id ]
     associate_public_ip_address = true
 
@@ -18,6 +18,10 @@ sudo apt-get update
 sudo apt-get install -y mysql-client
 echo ${aws_db_instance.default.address} >/tmp/dbdomain.txt
 sudo mv /tmp/dbdomain.txt /dbdomain.txt
+wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz
+sudo tar -xvf go1.17.7.linux-amd64.tar.gz
+export GOROOT=/usr/local/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 EOF
 }
 

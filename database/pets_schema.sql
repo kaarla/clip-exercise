@@ -44,7 +44,12 @@ CREATE TABLE `Pet` (
 
 LOCK TABLES `Pet` WRITE;
 /*!40000 ALTER TABLE `Pet` DISABLE KEYS */;
-INSERT INTO `Pet` VALUES ('korea','yaz','cat','H');
+INSERT INTO `Pet` VALUES ('korea','yaz','cat','M');
+INSERT INTO `Pet` VALUES ('olivia','kar','cat','M');
+INSERT INTO `Pet` VALUES ('napo','reina','dog','H');
+INSERT INTO `Pet` VALUES ('enchilada','ric','cat','M');
+INSERT INTO `Pet` VALUES ('eli','kar','cat','M');
+
 /*!40000 ALTER TABLE `Pet` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
