@@ -15,7 +15,7 @@ resource "aws_db_parameter_group" "default" {
 
 resource "aws_db_subnet_group" "default" {
   name       = "main"
-  subnet_ids = [ module.vpc.subnet_private1_id , module.vpc.subnet_private2_id ]
+  subnet_ids = [module.vpc.subnet_private1_id, module.vpc.subnet_private2_id]
 
   tags = {
     Name = "My DB subnet group"
@@ -31,31 +31,31 @@ resource "aws_security_group" "rds-sg" {
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
-    cidr_blocks = [ module.vpc.vpc_cidr ]
+    cidr_blocks = [module.vpc.vpc_cidr]
   }
 
   egress {
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
-    cidr_blocks = [ module.vpc.vpc_cidr ]
+    cidr_blocks = [module.vpc.vpc_cidr]
   }
 }
 
 resource "aws_db_instance" "default" {
-  allocated_storage    = 100
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "8.0"
-  instance_class       = "db.t2.micro"
-  identifier           = "pets"
-  db_name              = "pets"
-  username             = "root"
-  password             = "my-secret-pw"
-  parameter_group_name = aws_db_parameter_group.default.id
-  db_subnet_group_name = aws_db_subnet_group.default.id
-  vpc_security_group_ids = [ aws_security_group.rds-sg.id ]
-  publicly_accessible  = false
-  skip_final_snapshot  = true
-  multi_az             = false
+  allocated_storage      = 100
+  storage_type           = "gp2"
+  engine                 = "mysql"
+  engine_version         = "8.0"
+  instance_class         = "db.t2.micro"
+  identifier             = "pets"
+  db_name                = "pets"
+  username               = "root"
+  password               = "my-secret-pw"
+  parameter_group_name   = aws_db_parameter_group.default.id
+  db_subnet_group_name   = aws_db_subnet_group.default.id
+  vpc_security_group_ids = [aws_security_group.rds-sg.id]
+  publicly_accessible    = false
+  skip_final_snapshot    = true
+  multi_az               = false
 }

@@ -1,18 +1,18 @@
 resource "aws_instance" "public-ec2" {
-    ami           = var.ami_id
-    instance_type = var.instance_type
-    subnet_id     = module.vpc.subnet_public_id
-    key_name      = var.key_name
-    vpc_security_group_ids = [ aws_security_group.ec2-sg.id ]
-    associate_public_ip_address = true
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  subnet_id                   = module.vpc.subnet_public_id
+  key_name                    = var.key_name
+  vpc_security_group_ids      = [aws_security_group.ec2-sg.id]
+  associate_public_ip_address = true
 
-    tags = {
-        Name = "ec2-main"
-    }
+  tags = {
+    Name = "ec2-main"
+  }
 
-    depends_on = [ module.vpc.vpc_id, module.vpc.igw_id, aws_db_instance.default ]
+  depends_on = [module.vpc.vpc_id, module.vpc.igw_id, aws_db_instance.default]
 
-    user_data = <<EOF
+  user_data = <<EOF
 #!/bin/sh
 sudo apt-get update
 sudo apt-get install -y mysql-client
@@ -35,7 +35,7 @@ resource "aws_security_group" "ec2-sg" {
     protocol    = "-1"
     from_port   = 0
     to_port     = 0
-    cidr_blocks = [ "0.0.0.0/0" ]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
