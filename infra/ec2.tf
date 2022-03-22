@@ -16,6 +16,7 @@ resource "aws_instance" "public-ec2" {
 #!/bin/sh
 sudo apt-get update
 sudo apt-get install -y mysql-client
+sudo apt-get install -y jq
 echo ${aws_db_instance.default.address} >/tmp/dbdomain.txt
 sudo mv /tmp/dbdomain.txt /dbdomain.txt
 wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz

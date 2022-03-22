@@ -1,1 +1,1 @@
-key_name = "kar_keys"
+key_name = "kar-keys"

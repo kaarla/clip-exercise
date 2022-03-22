@@ -16,5 +16,5 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  default = "kar_keys"
+  default = "kar-keys"
 }
