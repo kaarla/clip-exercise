@@ -13,6 +13,8 @@ import (
     _ "github.com/go-sql-driver/mysql"
 )
 
+var DB_host string
+
 type api struct {
 	router http.Handler
 }
@@ -47,7 +49,7 @@ func (a *api) fetchPet(w http.ResponseWriter, r *http.Request) {
 
 	var pet pet.Pet
 
-  db, err := sql.Open("mysql", "root:my-secret-pw@tcp(127.0.0.1:3306)/pets")
+  db, err := sql.Open("mysql", "root:my-secret-pw@tcp(" + DB_host + ":3306)/pets")
   if err != nil {
         panic(err.Error())
   }
@@ -59,7 +61,7 @@ func (a *api) fetchPet(w http.ResponseWriter, r *http.Request) {
 
   w.Header().Set("Content-Type", "application/json")
   if errQ != nil {
-    w.WriteHeader(http.StatusNotFound) 
+    w.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(w).Encode("Pet Not found")
 		return
   }
