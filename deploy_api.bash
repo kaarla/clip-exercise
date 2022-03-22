@@ -19,5 +19,5 @@ ssh -i $1 "ubuntu@$ec2PublicDNS" << EOF
   mysql -h $dbAddress -u root --password=my-secret-pw < database/pets_schema.sql
   cd api/cmd/petsapi
   go build
-  ./petsapi $ec2PrivateIP $dbAddress
+  ./petsapi $ec2PrivateIP $dbAddress &
 EOF
