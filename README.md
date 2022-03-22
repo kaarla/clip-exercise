@@ -19,7 +19,7 @@ Finalmente el directorio **api** se encuentra el código necesario para crear un
 $ bash create_infra.sh "key-name"
 ```
 
-1. Una vez que termine de crearse la infraestructura, verá como salida 3 variables que nos servirán para configurar el despliegue de nuestra aplicación. Ejemplo:
+2. Una vez que termine de crearse la infraestructura, verá como salida 3 variables que nos servirán para configurar el despliegue de nuestra aplicación. Ejemplo:
 
 ```bash
 db-address = "pets.c2spannraqzy.us-west-2.rds.amazonaws.com"
@@ -27,7 +27,7 @@ ec2-public-dns = "ec2-34-215-181-199.us-west-2.compute.amazonaws.com"
 ec2-public-private-ip = "192.168.1.249"
 ```
 
-1. Ejecute el script para desplegar la aplicación y pase como parámetros el archivo *pem* (que puede ser de extesión .cer) y  las variables anteriores:
+3. Ejecute el script para desplegar la aplicación y pase como parámetros el archivo *pem* (que puede ser de extesión .cer) y  las variables anteriores:
 
 ```bash
 $ bash deploy_api.sh "key-name.cer" "pets.c2spannraqzy.us-west-2.rds.amazonaws.com" "ec2-34-215-181-199.us-west-2.compute.amazonaws.com" "192.168.1.249"
@@ -53,7 +53,7 @@ ssh -i [key-name] "ubuntu@[ec2-public-dns]"
   ./petsapi [ec2-public-private-ip] [db-address] &
 ```
 
-1. Sabrá que la API se está ejecutando correctamente porque el script se ejecutó sin errores **o**  al ejecutar el binario de la API (el último comando), no hay mensajes de error. Por ejemplo, así  se ejecutaría la API:
+4. Sabrá que la API se está ejecutando correctamente porque el script se ejecutó sin errores **o**  al ejecutar el binario de la API (el último comando), no hay mensajes de error. Por ejemplo, así  se ejecutaría la API:
 
     `$ ./petsapi "192.168.1.249" "[pets.c2spannraqzy.us-west-2.rds.amazonaws.com](http://pets.c2spannraqzy.us-west-2.rds.amazonaws.com/)" &`
 
@@ -73,7 +73,7 @@ ssh -i [key-name] "ubuntu@[ec2-public-dns]"
     - eli
 
     y la respuesta esperada es:
-    
+
 ```json
 {
 	"name":"eli",
