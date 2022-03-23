@@ -57,7 +57,7 @@ ssh -i [key-name] "ubuntu@[ec2-public-dns]"
 
 4. Sabrá que la API se está ejecutando correctamente porque el script se ejecutó sin errores **o**  al ejecutar el binario de la API (el último comando), no hay mensajes de error. Por ejemplo, así  se ejecutaría la API:
 
-    `$ ./petsapi "192.168.1.249" "[pets.c2spannraqzy.us-west-2.rds.amazonaws.com](http://pets.c2spannraqzy.us-west-2.rds.amazonaws.com/)" &`
+    `$ ./petsapi "192.168.1.249" "pets.c2spannraqzy.us-west-2.rds.amazonaws.com" "http://pets.c2spannraqzy.us-west-2.rds.amazonaws.com/" &`
 
     y una vez que no se reciban errores, desde esta misma terminal u otra con la conexión a ssh hacia nuestra instancia EC2, podríamos hacer una consulta de la siguiente forma:
 
